@@ -1,0 +1,189 @@
+
+//ALTERAR PARA .JS APENAS QUANDO HOUVER ALTERAÇÕES. DEPOIS VOLTAR PARA .TXT
+
+const { Interaction, MessageEmbed } = require('discord.js');
+const moment = require('moment');
+
+const { Command, Emojis, EColors, Guild, User, MentorJson2, TeamsJson, } = require('../index');
+
+const { Event, logger } = require('..');
+const Teams = require('../database/Schemas/Teams');
+const Mentor = require('../database/Schemas/Mentor');
+const requestMentoring = require('../database/Schemas/requestMentoring');
+
+require('moment-duration-format');
+moment.locale('pt-br');
+
+module.exports = class extends Event {
+  constructor(client) {
+    super(client, {
+      event: 'ready',
+    });
+  }
+
+  /**
+   * @param {Interaction} interaction
+   */
+
+  async execute(interaction) {
+    // Verifica se o usuário já existe no banco de dados
+    //const userData = await User.findOne({ _id: interaction.user.id });
+
+   
+
+    /** 
+    const equipesRegistradas = await Teams.find({})
+    const mentoresRegistradas = await Mentor.find({})
+    const requestMentoringData = await requestMentoring.find({})
+
+    const advisor = await Teams.distinct('members', {members: {$gt: []}})
+    
+    //console.log(advisor)
+
+    const cache = []
+    const cache2 = []
+    for(const x of advisor){
+
+        if(x.isAdvisor === true){
+            if(cache2.includes(x.memberID)) continue;
+            cache2.push(x.memberID);
+        } else{
+            if(cache.includes(x.memberID))continue;
+            cache.push(x.memberID);
+        } 
+        
+        }
+
+        const cache3 = []
+        const cache4 = []
+        let time = 0
+    for(const x of requestMentoringData){
+
+      //Mentorias com menos de 5 minutos não imprimem
+        if((x.dateEnd - x.dateInitial ) < 300000) continue;
+        if(!cache3.includes(x.teamID)){
+          cache4.push(x)
+        }
+        time = time + (x.dateEnd - x.dateInitial );
+        cache3.push(x.teamID)
+        
+    }
+
+
+
+
+
+
+    const start = moment('2023-05-03');
+const end = moment('2023-05-05').endOf('day');
+
+const counts = {};
+
+const requests = await requestMentoring.find({
+  date: {
+    $gte: start.valueOf(),
+    $lte: end.valueOf(),
+  },
+});
+
+requests.forEach((request) => {
+  const date = moment(request.date);
+  const day = date.format('YYYY-MM-DD');
+  const hour = date.hour();
+  const period = getPeriod(hour);
+
+  if (!counts[day]) {
+    counts[day] = {
+      manhã: 0,
+      tarde: 0,
+      noite: 0,
+    };
+  }
+
+  counts[day][period]++;
+});
+
+console.log(`Mentorias solicitadas no período de ${start.format('DD/MM/YYYY')} a ${end.format('DD/MM/YYYY')}:`);
+for (const day in counts) {
+  console.log(day);
+  console.log(`Manhã: ${counts[day].manhã}`);
+  console.log(`Tarde: ${counts[day].tarde}`);
+  console.log(`Noite: ${counts[day].noite}`);
+}
+
+function getPeriod(hour) {
+  if (hour >= 6 && hour < 12) {
+    return 'manhã';
+  } else if (hour >= 12 && hour < 18) {
+    return 'tarde';
+  } else {
+    return 'noite';
+  }
+}
+
+    console.log(`\nQuantidade de Equipes Registradas: ${equipesRegistradas.filter(x => x.members.length > 0).length}`)
+    console.log(`Quantidade de Mentores Registrados: ${mentoresRegistradas.filter(x => x.userID).length}`)
+    console.log(`Quantidade de Alunos Registrados: ${cache.length}`)
+    console.log(`Quantidade de Orientadores Registrados: ${cache2.length}`)
+
+    console.log(`\nQuantidade de Mentorias realizadas: ${cache3.length}`)
+    console.log(`Quantidade de Tickets atendidos: 84`)
+
+    console.log(`\nQuantidade de Equipes Mentoradas: ${cache4.length}`)
+    console.log(`Quantidade de Mentores que realizaram mentorias: 33`)
+    console.log(`Tempo total de Mentorias realizadas: ${Moment.duration(time).format('h[h] m[m] s[s]')}`)
+ 
+    */
+
+ 
+    const mentores = await Mentor.distinct('userID', { userID: { $ne: null } })
+
+    for(const x of mentores){ 
+
+     const mentorData = await Mentor.findOne({ userID: x})
+     if(mentorData.lastMentoring.length <= 0) continue;
+     const mentorj = MentorJson2.find(x => x.mentorID === mentorData._id)
+     const userData = await User.findOne({ _id: x})
+
+     const equipesSeparadas = [];
+     const equipesIDSeparadas = [];
+     let time = 0;
+     let amount = 0
+     for(const y of mentorData.lastMentoring){
+
+      //Mentorias com menos de 5 minutos não imprimem
+      if((y.dateEnd - y.dateInitial ) < 300000) continue;
+      amount = amount + 1;
+
+      time = time + (y.dateEnd - y.dateInitial);
+      const teamj = TeamsJson.find(x => x.groupID === y.teamID)
+
+      const conjunto = `${teamj.groupName} ( ${teamj.etec} ) [${moment.duration(y.dateEnd - y.dateInitial).format('h[h] m[m]')}]`
+
+      const nomesEquipes = conjunto.split('; ');
+        equipesSeparadas.push(...nomesEquipes);
+
+        const idEquipes = y.teamID.split('; ');
+        equipesIDSeparadas.push(...idEquipes);
+     }
+
+      console.log(`{
+        "Nome": "${mentorj.name}",
+        "ID": "${mentorj.mentorID}",
+        "email": "${mentorj.email}",
+        "Quantidade de mentorias realizadas": "${amount}",
+        "Tempo total em mentoria": "${moment.duration(time).format('h[h] m[m]')}",
+        "Tempo total em chamadas": "${moment.duration(userData.callInfo.timeAll).format('h[h] m[m]')}",
+        "Nome das equipes": "${equipesSeparadas}",
+        "ID equipes": "${equipesIDSeparadas}"
+      },
+      `)
+
+         
+
+    }
+
+    
+
+}
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "email": "tiagaojs@email.com",
+    "ownerName": "Tiago Souza",
+    "groupName": "Equipe de teste",
+    "etec": "Etec",
+    "membersNumber": 5,
+    "membersNames": "Tiago Souza1;Tiago Souza2;Tiago Souza3;Tiago Souza4",
+    "teamEmails": "tiagaojs@email.com;tiagaojs1@email.com;tiagaojs2@email.com;tiagaojs3@email.com;tiagaojs4@email.com",
+    "monitorName": "Tiago Professor",
+    "monitorEmail": "TiagoMonitor@email.com",
+    "groupID": "EQ_Teste_001"
+  },
+  {
+    "email": "gusttavo@email.com",
+    "ownerName": "Gusttavo",
+    "groupName": "Reset",
+    "etec": "Etec Cardoso - São Vicente",
+    "membersNumber": 5,
+    "membersNames": "Sofia;Álvaro;Kaio;Joabson",
+    "teamEmails": "sofia@email.com;alvaro@email.com;kaio@email.com;joabson@email.com",
+    "monitorName": "Akemi",
+    "monitorEmail": "akemi@email.com",
+    "groupID": "EQ_RESET_999"
+  },
+  {
+    "email": "juliana@email.com",
+    "ownerName": "Juliana",
+    "groupName": "Innotech",
+    "etec": "Etec Cardoso - São Vicente",
+    "membersNumber": 4,
+    "membersNames": "Gama;Mariane;Pedro",
+    "teamEmails": "gama@email.com;mariane@email.com;pedro@email.com",
+    "monitorName": "Akemi",
+    "monitorEmail": "akemi@email.com",
+    "groupID": "EQ_INNOTECH_969"
+  }
+]

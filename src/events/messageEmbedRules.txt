@@ -1,0 +1,72 @@
+
+//ALTERAR PARA .JS APENAS QUANDO HOUVER ALTERAÇÕES. DEPOIS VOLTAR PARA .TXT
+
+const { Interaction,  MessageEmbed } = require('discord.js');
+
+const { Event } = require('..');
+
+module.exports = class extends Event {
+  constructor(client) {
+    super(client, {
+      event: 'ready',
+    });
+  }
+
+   /**
+   * @param {Interaction} interaction
+   */
+
+ async execute(interaction) {
+    
+    
+    const embedRulesAll = new MessageEmbed()
+    .setColor('fc8403')
+    .setDescription(`
+
+    Esta lista não constitui o conjunto completo de regras, e nós podemos tomar medidas em caso de má conduta que não esteja explicitamente listado abaixo. Em todos os momentos, use o bom senso para qualquer ação que esteja prestes a realizar.
+
+    **1 - Regras gerais do servidor**
+
+    **1.1 Termos de Segurança**
+    Qualquer violação das regras presentes nos [Termos de Uso](https://discord.com/terms) e nas [Diretrizes da Comunidade](https://discord.com/guidelines) resultará em sua remoção do servidor
+    
+    **1.2. Mantenha um ambiente seguro e agradável no servidor**
+    Totalmente proibido conteúdos que possuem flood, spam, poluição sonora, textos indesejados, compartilhamento de dados pessoais, conteúdo Nsfw (+18), ameaças, menção de cargos sem necessidade, entre outros; 
+    
+    **1.3. Respeito e bom senso**
+    Não será tolerado qualquer tipo de preconceito. Lembrando que isso inclui apologia a movimentos que tenham ideais racistas, homofóbicos ou de qualquer discriminação.
+    
+    **1.4. Divulgação e comércio**
+    A realização de vendas é estritamente proibida. É vedada a divulgação de qualquer tipo de conteúdo, incluindo mensagens em caráter privado, bem como a auto promoção.
+    
+    **1.5. RAIDS**
+    É expressamente proibido qualquer comportamento que incentive ou promova as raids. Com isso, caracterizam-se múltiplos usuários com fotos idênticas e perturbação generalizada.
+    
+    **1.6. Termos proibidos**
+    É proibida a utilização de termos que remetem a assuntos indevidos. Com isso, destacam-se fragmentos associados a pedofilia, toxidade e preconceito.
+
+    **1.7. Nicks e Fotos de perfil**
+    A escolha do Nick e da foto de perfil é de responsabilidade de cada membro, no entanto, é importante lembrar que ambos devem ser condizentes com o ambiente e a proposta da equipe. Nomes ou imagens que sejam ofensivos, inapropriados, desrespeitosos, discriminatórios, ou que contenham conteúdo +18 ou que promovam qualquer tipo de violência, não serão permitidos. Caso a administração entenda que o Nick ou a foto de perfil de algum membro fere estas diretrizes, o mesmo será notificado a realizar a alteração necessária. Em caso de descumprimento ou reincidência, o membro e sua equipe serão banidos e expulsos do HackaThon.
+    
+    **1.8. Respeite os Mentores.**
+    Os mentores são responsáveis por auxiliar a equipe em suas necessidades, esclarecendo dúvidas, realizando call de ajuda. Sendo assim, é fundamental que todos respeitem e valorizem a função exercida pelos mentores, reconhecendo o esforço e o conhecimento desses profissionais.`)
+
+    const embedRulesBot = new MessageEmbed()
+    .setColor('fc8403')
+    .setDescription(`
+
+    **2 - Regras do BOT**
+
+    **2.1. Tentativa de bug e crash.**
+    É proibido realizar testes no bot com o intuito de encontrar falhas ou, até mesmo, derrubá-lo. Caso ocorra a identificação de alguma falha, é obrigatório reportá-la ao desenvolvedor responsável ou à administração.
+    
+    **2.2. Utilizar comandos que não condiz com seu cargo.**
+    Não é permitido tentar executar comandos que não pertencem ao seu cargo. Com isso, toda a equipe será notificada caso haja tentativas.
+    
+    **2.3. Realizar procedimentos com o objetivo de verificar a sua funcionalidade.**
+    Recomenda-se evitar a execução de comandos sem a devida necessidade, uma vez que cerca de 90% dos comandos não possuem sistema de confirmação. É recomendado que os comandos sejam utilizados somente quando estritamente necessários. Tal orientação também se aplica aos botões localizado em <#ID>`)
+    .setFooter({text: `¹A prática de qualquer infração poderá resultar na remoção da equipe e, ainda, ser objeto de denúncia ao CPS (Centro Paula Souza). \n²Essas regras e recomendações podem ser alteradas sem aviso prévio.`})
+    
+    await this.client.channels.cache.get('ID').send({ embeds: [embedRulesAll, embedRulesBot]})
+  }
+};

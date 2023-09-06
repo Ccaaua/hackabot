@@ -1,0 +1,45 @@
+{
+  "name": "hackabot",
+  "version": "1.0.0",
+  "description": "HackaBot, by Caua Campos Amancio",
+  "author": "Caua Campos Amancio",
+  "main": "src/shard.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ccaaua/hackabot.git"
+  },
+  "keywords": [],
+  "license": "MIT",
+  "scripts": {
+    "start": "node shard.js",
+    "dev": "set NODE_ENV=development && nodemon shard.js"
+  },
+  "bugs": {
+    "url": "https://github.com/Ccaaua"
+  },
+  "homepage": "https://github.com/Ccaaua",
+  "engines": {
+    "node": ">=16"
+  },
+  "dependencies": {
+    "@discordjs/voice": "^0.9.0",
+    "bullmq": "^3.12.0",
+    "canvas": "^2.11.2",
+    "discord.js": "^13.6.0",
+    "dotenv": "^10.0.0",
+    "fs": "^0.0.1-security",
+    "glob": "^7.2.0",
+    "libsodium-wrappers": "^0.7.10",
+    "moment": "^2.29.1",
+    "moment-duration-format": "^2.3.2",
+    "mongoose": "^6.0.12",
+    "os": "^0.1.2",
+    "pino": "^6.13.3",
+    "pino-pretty": "^7.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.24.2"
+  }
+}
