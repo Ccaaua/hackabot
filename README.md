@@ -1,31 +1,43 @@
-# hackabot
-Eis aqui o Código Aberto (Open Source) do HackaBot. 
+# HackaBot - Código Fonte e suas Funcionalidades.
 
-Nesse repositório, você encontrará todas as linhas criadas/digitadas para dar a vida ao HackaBot.
+Bem-vindo(a) ao repositório oficial do HackaBot, um projeto desenvolvido para o Hackathon Acadêmico promovido pela Robótica Paula Souza, do Centro Paula Souza.
 
-O propósito do Bot é automatizar toda a etapa de "Mentoria" do HackaThon entre Etecs do Centro Paula Souza.
-Com supervisão do Coordenador Tiago Souza e da Andréia de Càssia dos Santos, foi possivel estabelecer todos os requisitos.
+## Objetivo do HackaBot
 
-Primeiramente, gostaria de dar créditos ao meu amigo David Venturini, o qual foi responsável pela estrutura do bot.
+O principal propósito do HackaBot é automatizar todas as etapas relacionadas à mentoria durante o Hackathon entre as Etecs, do Centro Paula Souza. Este projeto foi desenvolvido com a supervisão do Coordenador Tiago Souza e Andréia de Càssia dos Santos, garantindo a conformidade com todos os requisitos.
 
-De inicio, o Hacka deve ler os .json: groups e mentores. 
-Com as informações de "groups", ele criará uma categoria, com o nome da equipe, composta por um canal de texto, um canal de voz e um cargo, também com o nome da equipe. No mesmo seguimento, ele cadastrará previamente os Orientadores das equipes no banco de dados.
-Com as informações de "mentores", ele cadastrará previamente os dados dos mentores no banco de dados.
+## Créditos
 
-Executando o comando "/identificação", deve ser possivel se identificar com código de equipe ou mentor.
-Com o código de equipe, o participante/orientador conseguirá escolher, a partir de um botão, seu nome. Assim, o bot cadastrará ele no banco de dados e irá atribui-lo o cargo de sua equipe.
-Com o código de mentor, o participante conseguirá confirmar, a partir de um botão, seus dados. Assim, o bot irá finalizar o seu cadastro no banco de dados e irá atribui-lo o cargo de Mentor.
+Gostaria de agradecer ao meu amigo David Venturini, que contribuiu para a criação da estrutura(esqueleto) inicial do bot.
 
-O cargo de equipe, tem permissão apenas para ler a sua categoria. Como anteriormente dito, contem "chat-equipe" e "voz-equipe", para a equipe, orientador e o cujo mentor conversarem.
-O cargo de equipe, também tem permissão para solicitar a mentoria, clicando no botão "solicitar mentoria" disponivel no canal de texto "solicitar-mentoria".
+## Funcionalidades Principais
 
-O cargo de mentor, tem permissão para ler a categoria "MENTORES". No qual contém o "chat-mentores", para conversarem entrem si, e "solitação-mentoria", canal de texto que o bot irá enviar uma mensagem com o nome da equipe, que está solicitando mentoria, e um botão para o mentor mais rápido clica-lo e ter a oportunidade de mentorar.
-Após clicar em "Mentorar", o mentor irá receber o cargo da tal equipe e tendo acesso total a sua categoria.
-Para finalizar a mentoria, o mentor digitará "/mentor finalizar-mentoria <feedback>. Assim o bot, automaticamente, irá remover o cargo da equipe.
-O mentor poderá denunciar tal equipe utilizando "/mentor denunciar-equipe <nome_equipe> <motivo>.
+### Processamento de Dados Iniciais
 
-Tanto participante ou mentor, poderá utilizar o comando "/chamada". Comando para exibir informações de tempo em chamadas. 
+O HackaBot inicia lendo os arquivos .json denominados "groups" e "mentores". Com base nas informações do arquivo "groups", ele cria uma categoria com o nome da equipe, composta por um canal de texto, um canal de voz e um cargo, todos com o nome da equipe correspondente. Além disso, ele pré-cadastra os Orientadores das equipes no banco de dados. Os arquivos .json são gerados a partir de planilhas do Excel e convertidos para o formato .json.
 
+### Identificação e Cadastro
 
+Ao executar o comando "/identificação", os participantes e orientadores podem se identificar usando o código de equipe (groupID) ou mentor (mentorID). Com o código da equipe, os participantes e orientadores podem selecionar seus nomes por meio de um botão, e o HackaBot os cadastra no banco de dados e atribui o cargo correspondente à equipe ou ao orientador. Com o código do mentor, os participantes podem confirmar seus dados e o HackaBot conclui o cadastro e atribui o cargo de Mentor.
 
+### Permissões e Interações
 
+- O cargo de equipe permite que os membros leiam sua categoria, que inclui canais de texto e voz para facilitar a comunicação entre equipe, orientador e mentor.
+- Os membros com o cargo de equipe podem solicitar mentoria através do botão "solicitar mentoria" no canal de texto "solicitar-mentoria".
+- O cargo de mentor permite que os mentores leiam a categoria "MENTORES", que inclui canais de texto para comunicação entre eles e um canal chamado "solicitação-mentoria", onde o HackaBot envia mensagens com os nomes das equipes que solicitam mentoria e um botão para os mentores escolherem as equipes que desejam orientar.
+
+### Mentoria e Denúncias
+
+- Após aceitar uma equipe para orientação, o mentor recebe o cargo da equipe, obtendo acesso total à categoria dela. Para encerrar a mentoria, o mentor pode usar o comando "/mentor finalizar-mentoria <feedback>". Isso remove automaticamente o cargo da equipe, tornando-o disponível para mentoria novamente.
+- Os mentores também têm a opção de denunciar equipes usando "/mentor denunciar-equipe <nomeequipe> <motivo>".
+
+### Chamadas e Suporte
+
+- Tanto participantes quanto mentores podem usar o comando "/chamada" para exibir informações de tempo em chamadas.
+- No canal de texto "solicitar-mentoria", há um botão "solicitar ticket" que permite que mentores, participantes e orientadores criem um canal de texto na categoria "Tickets Abertos" para tirar dúvidas, obter ajuda ou relatar problemas. Administradores podem adicionar ou remover permissões usando comandos específicos.
+
+### Outras Funcionalidades
+
+- O HackaBot também oferece comandos como "/basicResume" para informações básicas sobre o banco de dados, "/blacklist" para gerenciar a lista proibida de usuários, "/manutenção" para ligar/desligar a manutenção do bot (com suporte para uma lista de permissões), "/resumo" para gerar imagens informativas e o comando "load" para ler os arquivos .json e realizar cadastros ou pré-cadastros de dados.
+
+Esperamos que o HackaBot seja uma ferramenta valiosa, simplificando a gestão de equipes, orientadores e mentores. Obrigado por utilizar nosso bot e por fazer parte deste evento empolgante!
