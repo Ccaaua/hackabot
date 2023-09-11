@@ -4,7 +4,7 @@ Bem-vindo(a) ao repositório oficial do HackaBot, um projeto desenvolvido para o
 
 ## Objetivo do HackaBot
 
-O principal propósito do HackaBot é automatizar todas as etapas relacionadas à mentoria durante o Hackathon entre as Etecs, do Centro Paula Souza. Este projeto foi desenvolvido com a supervisão do Coordenador Tiago Souza e Andréia de Càssia dos Santos, garantindo a conformidade com todos os requisitos.
+O principal propósito do HackaBot é automatizar todas as etapas relacionadas à mentoria durante o Hackathon entre as Etecs, do Centro Paula Souza. Este projeto foi desenvolvido com a supervisão do Coordenador Tiago Souza, Andréia de Càssia dos Santos e à Daiani Mariano de Brito, garantindo a conformidade com todos os requisitos.
 
 ## Créditos
 
